@@ -1,0 +1,70 @@
+\documentclass[11pt]{article}
+
+\usepackage{classDM17}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\title{Asmt 5: Regression}
+\author{Gopal Menon\\Turn in through Canvas by 2:45pm: \\
+Wednesday, April 12}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+%
+\section{Singular Value Decomposition (20 points)}
+First we will compute the SVD of the matrix $A$ we have loaded
+$$
+[U,S,V] = svd(A)
+$$
+Then take the top $k$ components of $A$ for values of $k = 1$ through $k=10$ using
+
+\begin{equation*}
+\begin{aligned}
+Uk &= U(:,1:k)\\
+Sk &= S(1:k,1:k)\\
+Vk &= V(:,1:k)\\
+Ak &= Uk*Sk*Vk'\\
+\end{aligned}
+\end{equation*}
+
+\paragraph{A: (10 points)} 
+Compute and report the $L_2$ norm of the difference between $A$ and $Ak$ for each value of $k$ using
+$$
+norm(A-Ak,2)
+$$
+
+    \begin{table}[!h] 
+    \centering
+    \caption{$L_2$ norm of the difference between $A$ and $Ak$ for each value of $k$}
+    \begin{tabular}{|c|c|}
+      \hline
+   $k$  & $L_2$ Norm  \\
+      \hline      
+      $1$ &      $40.483$  \\
+      \hline
+      $2$ &      $26.717$  \\
+      \hline
+      $3$ &      $25.000$  \\
+      \hline
+      $4$ &      $22.192$  \\
+      \hline
+      $5$ &      $17.675$  \\
+      \hline
+      $6$ &      $15.813$  \\
+      \hline
+      $7$ &      $13.351$  \\
+      \hline
+      $8$ &      $12.188$  \\
+      \hline
+      $9$ &      $9.1206$  \\
+      \hline
+      $10$ &      $9.0000$  \\
+      \hline
+    \end{tabular}
+\end{table}
+
+\end{document}
