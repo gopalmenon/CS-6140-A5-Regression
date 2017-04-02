@@ -31,7 +31,7 @@ Ak &= Uk*Sk*Vk'\\
 \end{aligned}
 \end{equation*}
 
-\paragraph{A: (10 points)} 
+\paragraph{A: (10 points):} 
 Compute and report the $L_2$ norm of the difference between $A$ and $Ak$ for each value of $k$ using
 $$
 norm(A-Ak,2)
@@ -39,7 +39,8 @@ $$
 
     \begin{table}[!h] 
     \centering
-    \caption{$L_2$ norm of the difference between $A$ and $Ak$ for each value of $k$}
+    \caption{$L_2$ norm of $A-Ak$ for each value of $k$}
+    \label{AAkL2}
     \begin{tabular}{|c|c|}
       \hline
    $k$  & $L_2$ Norm  \\
@@ -66,5 +67,10 @@ $$
       \hline
     \end{tabular}
 \end{table}
+
+\paragraph{B (5 points):}
+Find the smallest value $k$ so that the $L_2$ norm of $A-Ak$ is less than $10\%$ that of $A$; $k$ might or might not be larger than $10$.\\
+
+The $L_2$ norm of $A$ is $120.19$ and $10\%$ of that is $12.019$. From table \ref{AAkL2}, we can see that the smallest value of $k$ such that the $L_2$ norm of $A-Ak$ is less than $10\%$ that of $A$ is $9$.
 
 \end{document}
