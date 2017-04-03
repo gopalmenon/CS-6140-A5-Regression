@@ -73,4 +73,17 @@ Find the smallest value $k$ so that the $L_2$ norm of $A-Ak$ is less than $10\%$
 
 The $L_2$ norm of $A$ is $120.19$ and $10\%$ of that is $12.019$. From table \ref{AAkL2}, we can see that the smallest value of $k$ such that the $L_2$ norm of $A-Ak$ is less than $10\%$ that of $A$ is $9$.
 
+\paragraph{C (5 points):}
+
+Treat the matrix as $1125$ points in $30$ dimensions. Plot the points in $2$ dimensions in the way that minimizes the sum of residuals squared.\\
+
+The first two right singular vectors were used and all $1125$ points in $30$ dimensions were projected on them to get $1125$ points in $2$ dimensions. Since the first two singular vectors represent eigen vectors, this projection will result in the least sum of residuals squared. The plot is shown below in figure \ref{MinRes}.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=5in]{figures/MinRes.png}
+\caption{Points plotted in 2D to minimize sum of residuals squared}
+\label{MinRes}
+\end{figure} 
+
 \end{document}
