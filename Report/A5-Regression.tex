@@ -134,4 +134,62 @@ The theoretical bound is given by $\frac{\norm{A-A_k}_F^2}{l-k}$. When $k=0$, th
 For $k = 2$, $\frac{\norm{A-A_k}_F^2}{10} = 295.18$. From table \ref{ErrL}, we can see that when $l=9$, the error is at most $\frac{\norm{A-A_k}_F^2}{10}$ for $k = 2$.
 
 \end{itemize}
+
+\paragraph{B (20 points):}
+
+Estimate how large should l be in order to achieve $max_{\norm{x}=1} \left | \norm{Ax}^2 - \norm{Bx}^2 \right | \leq \frac{\norm{A}_F^2}{10}$. To estimate the relationship between $l$ and the error in this randomized algorithm, you will need to run multiple trials. Be sure to describe how you used these multiple trials, and discuss how many you ran and why you thought this was enough trials to run to get a good estimate.\\
+
+In the random projections algorithm, we want a mapping $\mu : \mathbb{R}^d \rightarrow \mathbb{R}^l$ with $l \ll d$ where all $\mathbb{R}^d$ is compressed into $\mathbb{R}^l$. And we want all distances preserved so that for all points $a, a' \in A$
+$$
+(1-\varepsilon)\norm{a-a'} \leq \norm{\mu(a)-\mu(a')} \leq (1+\varepsilon)\norm{a-a'}
+$$
+
+The \textit{Johnson-Lindenstrauss Lemma} says that if the reduced number of dimensions $l=O\left ( \frac{1}{\varepsilon^2} \log \left (\frac{n}{\delta} \right ) \right )$, then for all $a, a' \in A$ the above bound is satisfied with a probability of at least $1-\delta$.\\
+
+If $\varepsilon=0.10$ and $\delta=0.05$, then the number of rows we need to choose for the above bound to be satisfied with a probability of at least $0.95$ is
+
+\begin{equation*}
+\begin{aligned}\\
+l&=O\left ( \frac{1}{\varepsilon^2} \log \left (\frac{n}{\delta} \right ) \right )\\
+&= O\left ( \frac{1}{0.10^2} \log \left (\frac{1125}{0.05} \right ) \right )\\
+&= O\left ( 100 \log \left (22500 \right ) \right )\\
+&= O\left ( 435.22 \right )
+\end{aligned}
+\end{equation*}
+
+\begin{table}[!h] 
+    \centering
+    \caption{Errors for number of rows $l$ in the random projection}
+    \label{ErrRandProj}
+    \begin{tabular}{|c|c|}
+      \hline
+   Number of rows $l$  & Error  \\
+      \hline      
+      $430$ &      $1135.41$  \\
+      \hline
+      $431$ &      $1175.94$  \\
+      \hline
+      $432$ &      $1177.35$  \\
+      \hline
+      $433$ &      $1511.90$  \\
+      \hline
+      $434$ &      $610.41$  \\
+      \hline
+      $435$ &      $696.70$  \\
+      \hline
+      $436$ &      $1401.60$  \\
+      \hline
+      $437$ &      $1315.81$  \\
+      \hline
+      $438$ &      $287.31$  \\
+      \hline
+      $439$ &      $621.36$  \\
+      \hline
+      $440$ &      $435.97$  \\
+      \hline
+    \end{tabular}
+\end{table}
+
+The errors for various values of $l$ around $435$ are shown in table \ref{ErrRandProj}. In all the cases it is seen to be less than $\frac{\norm{A}_F^2}{10}$, which was already computed to be $1903.7$.
+
 \end{document}
