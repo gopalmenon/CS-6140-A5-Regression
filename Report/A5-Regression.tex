@@ -231,10 +231,51 @@ Solve for the coefficients $C$ (or $Cs$) using Least Squares and Ridge Regressio
 \end{table}
 
 \paragraph{B (20 points):}
+
 Create three row-subsets of $X$ and $Y$
+
 \begin{itemize}
 \item $X1 = X(1:66,:)$ and $Y1 = Y(1:66)$
 \item $X2 = X(34:100,:)$ and $Y2 = Y(34:100)$
 \item $X3 = [X(1:33,:); X(67:100,:)]$ and $Y3 = [Y(1:33); Y(67:100)]$
 \end{itemize}
+
+Repeat the above procedure on these subsets and \textit{cross-validate} the solution on the remainder of $X$ and $Y$. Specifically, learn the coefficients $C$ using, say, $X1$ and $Y1$ and then measure $norm(Y(67:100) - X(67:100,:)*C,2)$.
+
+\begin{table}[!h] 
+    \centering
+    \caption{Least Squares Regression Error}
+    \label{ErrOls2}
+    \begin{tabular}{|c|c|}
+      \hline
+   Training Subsets  & Error \\
+      \hline      
+      $X1, Y1$ &      $14.787131$  \\
+      \hline
+      $X2, Y2$ &      $14.525954$  \\
+      \hline
+      $X3, Y3$ &      $23.194199$  \\
+      \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[!h] 
+    \centering
+    \caption{Ridge Regression Error}
+    \label{ErrRidge2}
+    \begin{tabular}{|c|c|c|c|c|c|}
+      \hline
+   Training Subsets  & $Error_{s=0.1}$ & $Error_{s=0.3}$ &$Error_{s=0.5}$ &$Error_{s=1.0}$ &$Error_{s=2.0}$  \\
+      \hline      
+      $X1, Y1$ &      $14.785569$  & $14.773048$ & $14.747842$ & $14.627345$ & $14.167225$ \\
+      \hline
+      $X2, Y2$ &      $14.525810$   & $14.525195$ & $14.526353$ & $14.555734$ & $14.809322$ \\
+      \hline
+      $X3, Y3$ &      $23.195206$   & $23.203230$ & $23.219111$ & $23.292336$ & $23.610916$ \\
+      \hline
+    \end{tabular}
+\end{table}
+Which approach works best (averaging the results from the three subsets): Least Squares, or for which value of $s$ using Ridge Regression?
+
+
 \end{document}
