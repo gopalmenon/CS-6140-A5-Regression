@@ -2,17 +2,18 @@
 function [found_row, zero_row] = get_zero_row(query_matrix)
 
     #Loop at each row
+    zero_row = 0;
     for row_counter = 1:rows(query_matrix) 
       found_row = true;
       for matrix_element = query_matrix(row_counter,:)
         if matrix_element != 0
-          found_row = false
-          break
+          found_row = false;
+          break;
         endif
       endfor
       if (found_row)
-        zero_row = row_counter
-        break
+        zero_row = row_counter;
+        break;
       endif
     endfor
 
@@ -34,29 +35,39 @@ function [reduced_matrix] = frequent_directions(input_matrix, desired_rank)
   for row_counter = 1:rows(input_matrix)
     
     # Look for a row in the reduced matrix with all zeros
-    [found_row, zero_row] = get_zero_row(reduced_matrix)
+    [found_row, zero_row] = get_zero_row(reduced_matrix);
     
     if (found_row)
 
-    # Replace the zero row with a row from input matrix
-      disp(reduced_matrix(zero_row, :));
+      # Replace the zero row with a row from input matrix
       reduced_matrix(zero_row, :) = input_matrix(row_counter, :);
     
     else 
     
       [U,S,V] = svd(reduced_matrix);
-      S(2*desired_rank,2*desired_rank)
-    
+      size(S)
+      if (S(2*desired_rank,2*desired_rank) != 0)
+      
+        last_eigen_value =  S(2*desired_rank,2*desired_rank) ^ 2;
+        new_singular_matrix = zeros(size(S));
+      
+        # Change each singular value
+        for singular_value_counter = 1:input_dimensions
+        
+          new_singular_matrix(singular_value_counter, singular_value_counter) = sqrt(S(singular_value_counter, singular_value_counter)^2 - last_eigen_value);
+      
+      
+        endfor
+        reduced_matrix =  new_singular_matrix * V.';
+      endif
     endif
-    
-    
-  
   
   endfor
   
 end
 
-
-load('A.dat')
-a=[1,2,3;1,0,1;0,0,0;4,3,1]
-frequent_directions(a,1)
+#cd data;
+load('A.dat');
+#A=[1,2,3;0,0,0;5,6,7;9,7,4];
+B= frequent_directions(A,500);
+norm(A'*A - B'*B, 2)
