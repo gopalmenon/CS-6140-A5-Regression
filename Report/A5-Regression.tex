@@ -163,7 +163,7 @@ l&=O\left ( \frac{1}{\varepsilon^2} \log \left (\frac{n}{\delta} \right ) \right
     \label{ErrRandProj}
     \begin{tabular}{|c|c|}
       \hline
-   Number of rows $l$  & Error  \\
+   Number of rows $l$  & Error $=norm(A'*A - B'*B, 2)$ \\
       \hline      
       $430$ &      $1135.41$  \\
       \hline
@@ -192,4 +192,49 @@ l&=O\left ( \frac{1}{\varepsilon^2} \log \left (\frac{n}{\delta} \right ) \right
 
 The errors for various values of $l$ around $435$ are shown in table \ref{ErrRandProj}. In all the cases it is seen to be less than $\frac{\norm{A}_F^2}{10}$, which was already computed to be $1903.7$.
 
+\section{Linear Regression (40 points)}
+
+\paragraph{A (20 points):}
+Solve for the coefficients $C$ (or $Cs$) using Least Squares and Ridge Regression with $s = {0.1, 0.3, 0.5, 1.0, 2.0}$ (i.e. s will take on one of those $5$ values each time you try, say obtaining $C05$ for $s = 0.5$). For each set of coefficients, report the error in the estimate $\hat{Y}$ of $Y$ as $norm(Y - X*C,2)$.
+
+\begin{table}[!h] 
+    \centering
+    \caption{Least Squares Regression Error}
+    \label{ErrOls}
+    \begin{tabular}{|c|}
+      \hline
+    Error \\
+      \hline      
+      $25.823822$  \\
+      \hline
+    \end{tabular}
+\end{table}
+\begin{table}[!h] 
+    \centering
+    \caption{Ridge Regression Error}
+    \label{ErrRidge}
+    \begin{tabular}{|c|c|}
+      \hline
+   $s$  & Error \\
+      \hline      
+      $0.1$ &      $25.823824$  \\
+      \hline
+      $0.3$ &      $25.823943$  \\
+      \hline
+      $0.5$ &      $25.824676$  \\
+      \hline
+      $1.0$ &      $25.833907$  \\
+      \hline
+      $2.0$ &      $25.919640$  \\
+      \hline
+    \end{tabular}
+\end{table}
+
+\paragraph{B (20 points):}
+Create three row-subsets of $X$ and $Y$
+\begin{itemize}
+\item $X1 = X(1:66,:)$ and $Y1 = Y(1:66)$
+\item $X2 = X(34:100,:)$ and $Y2 = Y(34:100)$
+\item $X3 = [X(1:33,:); X(67:100,:)]$ and $Y3 = [Y(1:33); Y(67:100)]$
+\end{itemize}
 \end{document}
