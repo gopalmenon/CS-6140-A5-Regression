@@ -20,8 +20,10 @@
 \usepackage[noend]{algpseudocode}
 \usepackage{array}
 \usepackage{tabulary}
-\newcolumntype{K}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage{mathtools,xparse}
 
+\newcolumntype{K}[1]{>{\centering\arraybackslash}p{#1}}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
 
 \pagestyle{fancy}
 

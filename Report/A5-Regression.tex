@@ -86,4 +86,52 @@ The first two right singular vectors were used and all $1125$ points in $30$ dim
 \label{MinRes}
 \end{figure} 
 
+\section{Frequent Directions and Random Projections (40 points)}
+
+\paragraph{A (20 points):}
+
+\begin{itemize}
+\item How large does $l$ need to be for the above error to be at most $\frac{\norm{A}_F^2}{10}$?\\
+$$
+\frac{\norm{A}_F^2}{10} = 1903.7
+$$
+
+\begin{table}[!h] 
+    \centering
+    \caption{Error for values of $l$}
+    \label{ErrL}
+    \begin{tabular}{|c|c|}
+      \hline
+   $l$  & Error  \\
+      \hline      
+      $3$ &      $2289.9$  \\
+      \hline
+      $4$ &      $1427.9$  \\
+      \hline
+      $5$ &      $965.01$  \\
+      \hline
+      $6$ &      $703.24$  \\
+      \hline
+      $7$ &      $494.53$  \\
+      \hline
+      $8$ &      $350.53$  \\
+      \hline
+      $9$ &      $247.37$  \\
+      \hline
+      $10$ &      $176.91$  \\
+      \hline
+    \end{tabular}
+\end{table}
+
+From table \ref{ErrL} we can see that with $l=4$, the error is at most $\frac{\norm{A}_F^2}{10}$.
+
+\item How does this compare to the theoretical bound (e.g. for $k = 0$).
+
+The theoretical bound is given by $\frac{\norm{A-A_k}_F^2}{l-k}$. When $k=0$, the bound becomes $\frac{\norm{A}_F^2}{l}$. This bound evaluates to $4759.3$ when $l=4$.
+
+\item How large does $l$ need to be for the above error to be at most $\frac{\norm{A-A_k}_F^2}{10}$ for $k = 2$?
+
+For $k = 2$, $\frac{\norm{A-A_k}_F^2}{10} = 295.18$. From table \ref{ErrL}, we can see that when $l=9$, the error is at most $\frac{\norm{A-A_k}_F^2}{10}$ for $k = 2$.
+
+\end{itemize}
 \end{document}
