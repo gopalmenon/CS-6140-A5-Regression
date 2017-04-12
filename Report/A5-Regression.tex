@@ -256,6 +256,8 @@ Repeat the above procedure on these subsets and \textit{cross-validate} the solu
       \hline
       $X3, Y3$ &      $23.194199$  \\
       \hline
+      Average &      $17.502428$  \\
+      \hline
     \end{tabular}
 \end{table}
 
@@ -273,9 +275,13 @@ Repeat the above procedure on these subsets and \textit{cross-validate} the solu
       \hline
       $X3, Y3$ &      $23.195206$   & $23.203230$ & $23.219111$ & $23.292336$ & $23.610916$ \\
       \hline
+      Average &      $17.502195$   & $17.500491$ & $17.497769$ & $17.491805$ & $17.529154$ \\
+      \hline
     \end{tabular}
 \end{table}
-Which approach works best (averaging the results from the three subsets): Least Squares, or for which value of $s$ using Ridge Regression?
 
+Which approach works best (averaging the results from the three subsets): Least Squares, or for which value of $s$ using Ridge Regression?\\
+
+The approach that worked best was for Ridge Regression with $s=1.0$, which had the lowest average error.
 
 \end{document}
